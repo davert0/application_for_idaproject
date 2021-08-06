@@ -5,11 +5,14 @@
     <title>Новое изображени</title>
 </head>
 <body>
+<a href="{% url 'home' %}">Назад к списку</a>
+<br>
+<h1>Новое изображение</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-primary btn-block">Update profile</button>
+        <button type="submit" class="btn btn-primary btn-block">Отправить</button>
     </div>
 </form>
 </body>

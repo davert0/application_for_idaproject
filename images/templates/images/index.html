@@ -8,13 +8,11 @@
 <h1>Список изображений</h1>
 {% if images %}
     {% for image in images %}
-    {{ image }}
+    <p><a href="#">{{ image }}</a></p>
     {% endfor %}
 {% else %}
     Нет доступных изображений
 {% endif %}
-<br>
-<br>
-<a href="{{ 'upload_image' }}">Добавить изображение</a>
+<p><a href="{% url 'upload_image' %}">Добавить изображение</a></p>
 </body>
 </html>
