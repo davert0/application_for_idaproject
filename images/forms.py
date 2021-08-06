@@ -10,3 +10,11 @@ class ImageUploadForm(forms.Form):
     def clean(self, *args, **kwargs):
         pass
 
+
+class ImageChangeForm(forms.ModelForm):
+    width = forms.IntegerField(label='Ширина')
+    height = forms.IntegerField(label='Высота')
+    
+    class Meta:
+        model = Image
+        fields = ('width', 'height')

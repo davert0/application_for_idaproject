@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
-from django.views.generic import ListView, FormView
+from django.views.generic import ListView, FormView, DetailView, UpdateView
 
-from images.forms import ImageUploadForm
+from images.forms import ImageUploadForm, ImageChangeForm
 from images.models import Image
 
 
@@ -10,6 +10,13 @@ class HomeView(ListView):
     model = Image
     template_name = 'images/index.html'
     context_object_name = 'images'
+
+
+class ImageDetailView(UpdateView):
+    model = Image
+    form_class = ImageChangeForm
+    template_name = 'images/detail.html'
+    context_object_name = 'image'
 
 
 def upload_image_view(request):
