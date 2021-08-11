@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.urls import reverse
 
-from django.views.generic import ListView, FormView, DetailView, UpdateView
+from django.views.generic import ListView, UpdateView, CreateView
 
 from images.forms import ImageUploadForm, ImageChangeForm
 from images.models import Image
@@ -31,23 +31,10 @@ class ImageDetailView(UpdateView):
         return super().form_valid(form)
 
 
-def upload_image_view(request):
-    if request.method == 'POST':
-        form = ImageUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            url = form.cleaned_data.get('image_url')
-            image = form.cleaned_data.get('image_input')
-            if image:
-                img_obj = Image(image=image)
-                img_obj.save()
-            if url:
-                img_obj = Image(image_url=url)
-                img_obj.get_remote_image()
-                img_obj.save()
-    else:
-        form = ImageUploadForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'images/upload.html', context)
+class ImageUploadView(CreateView):
+    template_name = 'images/upload.html'
+    form_class = ImageUploadForm
+    model = Image
 
+    def get_success_url(self):
+        return reverse('image_detail', kwargs={'pk': self.object.pk})

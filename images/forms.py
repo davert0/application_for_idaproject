@@ -26,7 +26,7 @@ class ImageUploadForm(forms.ModelForm):
 
 class ImageChangeForm(forms.ModelForm):
     width = forms.IntegerField(label='Ширина', required=False)
-    height = forms.IntegerField(label='Высота', required=True)
+    height = forms.IntegerField(label='Высота', required=False)
 
     class Meta:
         model = Image
