@@ -9,9 +9,9 @@ https://github.com/davert0/application_for_idaproject.git
 ```
 
 ## Запуск с помощью Docker
-'''
+```
 docker-compose up
-'''
+```
 
 Настройка окружения Linux
 
