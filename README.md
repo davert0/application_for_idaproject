@@ -5,38 +5,47 @@
 ## Установка
 
 ```sh
-https://github.com/davert0/application_for_idaproject.git
+git clone https://github.com/davert0/application_for_idaproject.git
 ```
 
 ## Запуск с помощью Docker
 ```
 docker-compose up
 ```
+Тесты в Docker
+```
+docker-compose exec app pytest
+```
+## Запуск без Docker
 
-Настройка окружения Linux
+### Настройка окружения Linux
 
-> python --version # Python 3.9.0
 
 ```sh
 python -m venv env
 
-source env/scripts/activate
+source env/bin/activate
 
 pip install -r requirements.txt
+```
+### Настройка окружения Windows
+
+```
+python -m venv env
+
+env\Scripts\activate.bat
 ```
 
 Запуск проекта
 
 ```sh
-cd imageapp
-
-touch imageapp/.env
+cd application_for_idaproject
 
 python manage.py makemigrations
 
 python manage.py migrate --run-syncdb
 
-python manage.py runserver 7000
+python manage.py runserver 8000
 ```
 
 ## Тесты
@@ -44,5 +53,5 @@ python manage.py runserver 7000
 Запуск всех тестов
 
 ```sh
-py.test
+pytest
 ```
