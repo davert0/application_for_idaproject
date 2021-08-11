@@ -16,6 +16,10 @@
     </div>
 </form>
 <br>
-<img src="{{image.image.url}}">
+{% if image.formatted_image %}
+        <img src="{{ image.formatted_image.url }}"/>
+    {% else %}
+        <img src="{{ image.image.url }}"/>
+    {% endif %}
 </body>
 </html>

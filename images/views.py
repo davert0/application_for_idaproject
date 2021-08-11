@@ -18,6 +18,18 @@ class ImageDetailView(UpdateView):
     template_name = 'images/detail.html'
     context_object_name = 'image'
 
+    def get_success_url(self) -> str:
+        return self.request.path
+
+    def form_valid(self, form):
+        height = form.cleaned_data.get('height', 0)
+        width = form.cleaned_data.get('width', 0)
+
+        image = form.instance
+        image.change_size(width, height)
+
+        return super().form_valid(form)
+
 
 def upload_image_view(request):
     if request.method == 'POST':
@@ -39,10 +51,3 @@ def upload_image_view(request):
     }
     return render(request, 'images/upload.html', context)
 
-# class UploadImageView(FormView):
-#     template_name = 'images/upload.html'
-#     form_class = ImageUploadForm
-#
-#     success_url = '/'
-#     def form_valid(self, form):
-#         return super().form_valid(form)
