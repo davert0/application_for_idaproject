@@ -5,10 +5,15 @@
 ## Установка
 
 ```sh
-git clone https://github.com/TolstochenkoDaniil/imageapp.git .
+https://github.com/davert0/application_for_idaproject.git
 ```
 
-Настройка окружения
+## Запуск с помощью Docker
+'''
+docker-compose up
+'''
+
+Настройка окружения Linux
 
 > python --version # Python 3.9.0
 
